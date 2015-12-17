@@ -5,7 +5,7 @@ import (
         "fmt"
         "net/http"
 
-        "../models"
+        "github.com/jochasinga/cli/secondapp/models"
 )
 
 var mbroker = models.NewBroker()

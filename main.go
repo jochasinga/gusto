@@ -4,15 +4,15 @@ import (
         "log"
         "net/http"
 
-        "./controllers"
-        "./models"
-
-        "github.com/gorilla/mux"
+        "github.com/jochasinga/cli/secondapp/controllers"
+        "github.com/jochasinga/cli/secondapp/models"
+        "github.com/jochasinga/cli/secondapp/routers"
 )
 
 var (
         cbroker = controllers.NewBroker()
         mbroker = models.NewBroker()
+        rbroker = routers.NewBroker()
 )
 
 // REMOVE: Used in populating sample data only
@@ -25,10 +25,6 @@ func init() {
 
 func main() {
 
-        router := mux.NewRouter()
-        router.HandleFunc("/", cbroker.HelloHandler)
-        router.HandleFunc("/users", cbroker.GetUsersHandler)
-        router.HandleFunc("/users/create", cbroker.CreateUserHandler)
-
+        router := rbroker.HandleRoutes()
         log.Fatal(http.ListenAndServe(":8080", router))
 }

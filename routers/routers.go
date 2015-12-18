@@ -3,7 +3,7 @@ package routers
 import (
         "github.com/gorilla/mux"
 
-        "github.com/jochasinga/cli/secondapp/cbroker"
+        "github.com/jochasinga/cli/secondapp/brokers/cbroker"
 )
 
 var C = cbroker.New()

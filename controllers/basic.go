@@ -5,7 +5,7 @@ import (
         "fmt"
         "net/http"
 
-        "github.com/jochasinga/cli/secondapp/mbroker"
+        "github.com/jochasinga/cli/secondapp/brokers/mbroker"
 )
 
 var M = mbroker.New()

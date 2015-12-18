@@ -4,16 +4,11 @@ import (
         "log"
         "net/http"
 
-        //"github.com/jochasinga/cli/secondapp/controllers"
-        //"github.com/jochasinga/cli/secondapp/models"
-        //"github.com/jochasinga/cli/secondapp/routers"
-        "github.com/jochasinga/cli/secondapp/cbroker"
-        "github.com/jochasinga/cli/secondapp/mbroker"
-        "github.com/jochasinga/cli/secondapp/rbroker"
+        "github.com/jochasinga/cli/secondapp/brokers/mbroker"
+        "github.com/jochasinga/cli/secondapp/brokers/rbroker"
 )
 
 var (
-        C = cbroker.New()
         M = mbroker.New()
         R = rbroker.New()
 )

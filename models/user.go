@@ -8,7 +8,7 @@ type User struct {
 
 var Users []User
 
-func (d *Delegate) CreateUser(username, email string, age int) {
+func (d *D) CreateUser(username, email string, age int) {
         Users = append(Users, User{
                 Username: username,
                 Email: email,
@@ -16,10 +16,10 @@ func (d *Delegate) CreateUser(username, email string, age int) {
         })
 }
 
-func (d *Delegate) GetAllUsers() []User {
+func (d *D) GetAllUsers() []User {
         return Users
 }
 
-func (d *Delegate) NewUser() *User {
+func (d *D) NewUser() *User {
         return new(User)
 }

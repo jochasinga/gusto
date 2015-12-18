@@ -5,25 +5,24 @@ import (
         "fmt"
         "net/http"
 
-        "github.com/jochasinga/cli/secondapp/models"
+        "github.com/jochasinga/cli/secondapp/mbroker"
 )
 
-var mbroker = models.NewBroker()
+var M = mbroker.New()
 
-// Make all handlers methods of Delegate
-func (d *Delegate) HelloHandler(w http.ResponseWriter, r *http.Request) {
+func (d *D) HelloHandler(w http.ResponseWriter, r *http.Request) {
         fmt.Fprintln(w, "Hello Gust!")
 }
 
-func (d *Delegate) GetUsersHandler(w http.ResponseWriter, r *http.Request) {
-        users := mbroker.GetAllUsers()
+func (d *D) GetUsersHandler(w http.ResponseWriter, r *http.Request) {
+        users := M.GetAllUsers()
         uj, _ := json.Marshal(users)
         fmt.Fprintln(w, string(uj))
 }
 
-func (d *Delegate) CreateUserHandler(w http.ResponseWriter, r *http.Request) {
-        user := mbroker.NewUser()
+func (d *D) CreateUserHandler(w http.ResponseWriter, r *http.Request) {
+        user := M.NewUser()
         json.NewDecoder(r.Body).Decode(user)
         fmt.Println("CreateUserHandler here")
-        mbroker.CreateUser(user.Username, user.Email, user.Age)
+        M.CreateUser(user.Username, user.Email, user.Age)
 }

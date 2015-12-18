@@ -3,17 +3,17 @@ package routers
 import (
         "github.com/gorilla/mux"
 
-        "github.com/jochasinga/cli/secondapp/controllers"
+        "github.com/jochasinga/cli/secondapp/cbroker"
 )
 
-var cbroker = controllers.NewBroker()
+var C = cbroker.New()
 
-func (d *Delegate) HandleRoutes() *mux.Router {
+func (d *D) HandleRoutes() *mux.Router {
 
         router := mux.NewRouter()
-        router.HandleFunc("/", cbroker.HelloHandler)
-        router.HandleFunc("/users", cbroker.GetUsersHandler)
-        router.HandleFunc("/users/create", cbroker.CreateUserHandler)
+        router.HandleFunc("/", C.HelloHandler)
+        router.HandleFunc("/users", C.GetUsersHandler)
+        router.HandleFunc("/users/create", C.CreateUserHandler)
 
         return router
 }

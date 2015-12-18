@@ -4,27 +4,30 @@ import (
         "log"
         "net/http"
 
-        "github.com/jochasinga/cli/secondapp/controllers"
-        "github.com/jochasinga/cli/secondapp/models"
-        "github.com/jochasinga/cli/secondapp/routers"
+        //"github.com/jochasinga/cli/secondapp/controllers"
+        //"github.com/jochasinga/cli/secondapp/models"
+        //"github.com/jochasinga/cli/secondapp/routers"
+        "github.com/jochasinga/cli/secondapp/cbroker"
+        "github.com/jochasinga/cli/secondapp/mbroker"
+        "github.com/jochasinga/cli/secondapp/rbroker"
 )
 
 var (
-        cbroker = controllers.NewBroker()
-        mbroker = models.NewBroker()
-        rbroker = routers.NewBroker()
+        C = cbroker.New()
+        M = mbroker.New()
+        R = rbroker.New()
 )
 
 // REMOVE: Used in populating sample data only
 func init() {
-        mbroker.CreateUser("kgibran", "kahlil_g@mail.com", 48)
-        mbroker.CreateUser("robpike", "rob_pike@gmail.com", 59)
-        mbroker.CreateUser("kenthompson", "kthompson@gmail.com", 72)
-        mbroker.CreateUser("pchasinga", "jo.chasinga@gmail.com", 32)
+        M.CreateUser("kgibran", "kahlil_g@mail.com", 48)
+        M.CreateUser("robpike", "rob_pike@gmail.com", 59)
+        M.CreateUser("kenthompson", "kthompson@gmail.com", 72)
+        M.CreateUser("pchasinga", "jo.chasinga@gmail.com", 32)
 }
 
 func main() {
 
-        router := rbroker.HandleRoutes()
+        router := R.HandleRoutes()
         log.Fatal(http.ListenAndServe(":8080", router))
 }

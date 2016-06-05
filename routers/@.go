@@ -1,3 +1,5 @@
 package routers
 
-type D struct {}
+type Delegate struct{
+	M map[string]string
+}

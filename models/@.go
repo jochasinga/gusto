@@ -1,3 +1,3 @@
 package models
 
-type D struct {}
+type Delegate struct{}

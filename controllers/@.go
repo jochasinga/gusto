@@ -1,3 +1,3 @@
 package controllers
 
-type D struct {}
+type Delegate struct{}

@@ -6,10 +6,23 @@ import (
 )
 
 type RBroker interface {
+	Add(string, string)
+	Del(string)
+	Get(string) string
+	Set(string, string)
+	Vars() *routers.VarSet
+
 	HandleRoutes() *mux.Router
-	CarryVal() *routers.Delegate
 }
 
 func New() RBroker {
-	return RBroker(new(routers.Delegate))
+	delegate := &routers.Delegate{
+		G: make(map[string][]string),
+		VarSet: &routers.VarSet{
+			Num:  routers.Num,
+			Msg:  routers.Msg,
+			Nums: routers.Nums,
+		},
+	}
+	return RBroker(delegate)
 }

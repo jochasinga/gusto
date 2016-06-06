@@ -8,11 +8,11 @@ import (
 
 var C = cbroker.New()
 
-func (d *Delegate) CarryVal() *Delegate {
-	d.M = make(map[string]string)
-	d.M["key"] = "value"
-	return d
-}
+var (
+	Num  int    = 3
+	Msg  string = "Hello"
+	Nums []int  = []int{1, 2}
+)
 
 func (d *Delegate) HandleRoutes() *mux.Router {
 

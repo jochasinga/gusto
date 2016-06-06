@@ -23,9 +23,13 @@ func init() {
 }
 
 func main() {
-
-	del := R.CarryVal()
-	fmt.Println(del.M)
 	router := R.HandleRoutes()
+	R.Add("name1", "Jordan")
+	R.Add("name2", "Mike")
+	fmt.Println(R.Get("name1"))
+
+	routerVars := R.Vars()
+	fmt.Println(routerVars.Num)
+	fmt.Println(routerVars.Nums)
 	log.Fatal(http.ListenAndServe(":8080", router))
 }

@@ -12,6 +12,7 @@ import (
 var (
 	M = mbroker.New()
 	R = rbroker.New()
+	C = cbroker.New()
 )
 
 // REMOVE: Used in populating sample data only
@@ -27,9 +28,9 @@ func main() {
 	R.Add("name1", "Jordan")
 	R.Add("name2", "Mike")
 	fmt.Println(R.Get("name1"))
-
 	routerVars := R.Vars()
 	fmt.Println(routerVars.Num)
 	fmt.Println(routerVars.Nums)
+	
 	log.Fatal(http.ListenAndServe(":8080", router))
 }

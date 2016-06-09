@@ -21,5 +21,12 @@ func (d *Delegate) HandleRoutes() *mux.Router {
 	router.HandleFunc("/users", C.GetUsersHandler)
 	router.HandleFunc("/users/create", C.CreateUserHandler)
 
+	cv := C.Vars()
+	cv.MyFunc()
+	fmt.Println(cv.MyParam)
+	for _, v := range cv.MySlice {
+		fmt.Println(v)
+	}
+	
 	return router
 }

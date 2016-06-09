@@ -8,7 +8,15 @@ import (
 	"github.com/jochasinga/gusto/brokers/mbroker"
 )
 
-var M = mbroker.New()
+var (
+	M = mbroker.New()
+	
+	MyFunc = func() {
+		fmt.Println("Funcky!")
+	}
+	MyParam = "Param"
+	MySlice = []string{"foo", "bar", "baz"}
+)
 
 func (d *Delegate) HelloHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, "Hello Gust!")
